@@ -71,7 +71,7 @@ class MusicBot(commands.Cog):
                 return await ctx.send(constants.SONG_NOT_FOUND)
             song = result[0]
         
-        if ctx.voice_client.source is not None:
+        if ctx.voice_client.source is not None and ctx.voice_client.is_playing():
             queue_len = len(self.song_queue[ctx.guild.id])
             if queue_len < 10:
                 self.song_queue[ctx.guild.id].append(song)
