@@ -25,8 +25,7 @@ class MusicBot(commands.Cog):
             await self.play_song(ctx, url)
             self.song_queue[ctx.guild.id].pop(0)
 
-            embed = discord.Embed(
-                title=f"Now playing: {name}", description=f"Link: [{name}]({url})", colour=discord.Colour.green())
+            embed = discord.Embed(title=f"Now playing: {name}", description=f"Link: [{name}]({url})", colour=discord.Colour.green())
             await ctx.send(embed=embed)
 
     async def search_song(self, amount, song_name, get_url=False):
@@ -84,6 +83,7 @@ class MusicBot(commands.Cog):
             await self.join(ctx)
 
         # Song is not a url
+        song_name = song
         if not (constants.YOUTUBE_URL_1 in song or constants.YOUTUBE_URL_2 in song):
             await ctx.send(constants.SEARCH_SONG)
 
